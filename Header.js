@@ -3,22 +3,38 @@ import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 class Header extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.input}> 
-                    <TextInput 
-                        style={styles.inputText}
-                        placeholder='Enter new todo'
-                        autoCorrect={ false }
-                    />
-                    <TouchableOpacity>
-                        <MaterialCommunityIcons style={styles.addBtn} size={30} name='plus-circle' />
-                    </TouchableOpacity>
-                </View>
-            </View>
-        )
+
+  state = {
+    newTodo: '',
+  }
+
+  addNewTodo = () => {
+    if(this.state.newTodo) {
+      this.props.addTodo(this.state.newTodo);
+      this.setState({
+          newTodo: ''
+      });
     }
+  }
+  
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.input}> 
+          <TextInput 
+            style={styles.inputText}
+            placeholder='Enter new todo'
+            autoCorrect={ false }
+            value={this.state.newTodo}
+            onChangeText={(newTodo) => this.setState({newTodo})}
+          />
+          <TouchableOpacity onPressOut={this.addNewTodo}>
+            <MaterialCommunityIcons style={styles.addBtn} size={30} name='plus-circle' />
+          </TouchableOpacity>
+        </View>
+      </View>
+      )
+  }
 }
 
 const styles = StyleSheet.create({
