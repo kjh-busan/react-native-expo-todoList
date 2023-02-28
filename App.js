@@ -4,6 +4,12 @@ import Header from './Header'
 import Body from './Body'
 
 export default class App extends React.Component {
+
+  // state 추가함.
+  state = {
+    todos: []
+  }
+  
   render() {
     return (
       <View style={styles.container}>
