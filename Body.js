@@ -3,44 +3,44 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 class Body extends Component {
-    state = [
-        {
-            text: '할일1',
-            completed: false,
-        },
-        {
-            text: '할일2',
-            completed: true,
-        },
-        {
-            text: '할일3',
-            completed: false,
-        },
-    ]
+  state = [
+    {
+      text: '할일1',
+      completed: false,
+    },
+    {
+      text: '할일2',
+      completed: true,
+    },
+    {
+      text: '할일3',
+      completed: false,
+    },
+  ]
 
     render() {
         return (
-            <View style={styles.container}>
-                {
-                    this.state.map(data => (
-                        <View style={styles.todo}>
-                            <View style={styles.todoText}>
-                                <TouchableOpacity style={styles.todoCheckbox}>
-                                    {
-                                        data.completed
-                                        ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
-                                        : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
-                                    }
-                                </TouchableOpacity>
-                                <Text>{data.text}</Text>
-                            </View>
-                            <TouchableOpacity>
-                                <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-                            </TouchableOpacity>
-                        </View>
-                    ))
-                }
-            </View>
+          <View style={styles.container}>
+              {
+                this.state.map(data => (
+                  <View style={styles.todo}>
+                    <View style={styles.todoText}>
+                      <TouchableOpacity style={styles.todoCheckbox}>
+                        {
+                          data.completed
+                          ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
+                          : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
+                        }
+                      </TouchableOpacity>
+                      <Text>{data.text}</Text>
+                    </View>
+                    <TouchableOpacity>
+                      <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+                    </TouchableOpacity>
+                  </View>
+                ))
+              }
+          </View>
         )
     }
 }
