@@ -5,26 +5,22 @@ import Body from './Body'
 
 export default class App extends React.Component {
 
-  // state 추가함.
   state = {
     todos: []
   }
 
-  // 할일 추가 함수
   addTodo = (todo) => {
     
-    // 새로운 할일(todo) 객체 생성
     const newTodo = {
-      id: Date.now(), // 등록시간
-      text: todo,      // 할일 내용
-      completed: false, // 완료 여부
+      id: Date.now(),
+      text: todo,
+      completed: false,
     }   
 
-    // state 업데이트
     this.setState(prevState => ({
       todos: [
-        newTodo,       // 새로 추가된 할일(todo)
-        ...prevState.todos // 기존의 할일 목록
+        newTodo,
+        ...prevState.todos
       ]
     }));
     console.log(this.state.todos);

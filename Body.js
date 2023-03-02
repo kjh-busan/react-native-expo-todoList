@@ -18,31 +18,31 @@ class Body extends Component {
     },
   ]
 
-    render() {
-        return (
-          <View style={styles.container}>
-              {
-                this.state.map(data => (
-                  <View style={styles.todo}>
-                    <View style={styles.todoText}>
-                      <TouchableOpacity style={styles.todoCheckbox}>
-                        {
-                          data.completed
-                          ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
-                          : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
-                        }
-                      </TouchableOpacity>
-                      <Text>{data.text}</Text>
-                    </View>
-                    <TouchableOpacity>
-                      <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-                    </TouchableOpacity>
-                  </View>
-                ))
-              }
-          </View>
-        )
-    }
+  render() {
+    return (
+      <View style={styles.container}>
+        {
+          this.state.map(data => (
+            <View style={styles.todo}>
+              <View style={styles.todoText}>
+                <TouchableOpacity style={styles.todoCheckbox}>
+                  {
+                    data.completed
+                    ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
+                    : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
+                  }
+                </TouchableOpacity>
+                <Text>{data.text}</Text>
+              </View>
+              <TouchableOpacity>
+                <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+              </TouchableOpacity>
+            </View>
+          ))
+        }
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
