@@ -15,7 +15,11 @@ class Body extends Component {
     {
       text: '할일3',
       completed: false,
+    },    {
+      text: '할일4',
+      completed: false,
     },
+
   ]
 
   render() {
