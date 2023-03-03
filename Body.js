@@ -36,7 +36,7 @@ class Body extends Component {
                     : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
                   }
                 </TouchableOpacity>
-                <Text>{data.text}</Text>
+                <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
               </View>
               <TouchableOpacity>
                 <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
   },
   todoDelBtn: {
     color: '#777'
+  },
+  todoCompleted: {
+    color: "#bbb",
+    textDecorationLine: "line-through"
   }
 });
 
