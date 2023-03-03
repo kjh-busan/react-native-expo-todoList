@@ -26,8 +26,8 @@ class Body extends Component {
     return (
       <View style={styles.container}>
         {
-          this.state.map(data => (
-            <View style={styles.todo}>
+          this.props.todos.map(data => (
+            <View style={styles.todo} key={data.id}>
               <View style={styles.todoText}>
                 <TouchableOpacity style={styles.todoCheckbox}>
                   {
@@ -50,31 +50,31 @@ class Body extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginVertical: 5,
-        marginHorizontal: 20,
-        padding: 10,
-        backgroundColor: "#FFF",
-        borderRadius: 10,
-    },
-    todo: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: 'space-between',
-        height: 50,
-        borderBottomColor: "#bbb",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    todoCheckbox: {
-        marginRight: 5,
-    },
-    todoText: {
-        flexDirection: 'row',
-    },
-    todoDelBtn: {
-        color: '#777'
-    }
+  container: {
+    flex: 1,
+    marginVertical: 5,
+    marginHorizontal: 20,
+    padding: 10,
+    backgroundColor: "#FFF",
+    borderRadius: 10,
+  },
+  todo: {
+    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: 'space-between',
+    height: 50,
+    borderBottomColor: "#bbb",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  todoCheckbox: {
+    marginRight: 5,
+  },
+  todoText: {
+    flexDirection: 'row',
+  },
+  todoDelBtn: {
+    color: '#777'
+  }
 });
 
 export default Body;

@@ -31,7 +31,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
         <Header addTodo={this.addTodo}/>
-        <Body />
+        <Body todo={this.state.todos} />
       </View>
     );
   }
