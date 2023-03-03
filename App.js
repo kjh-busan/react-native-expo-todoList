@@ -26,12 +26,24 @@ export default class App extends React.Component {
     console.log(this.state.todos);
   }
 
+  checkTodo = (id) => {
+    this.setState(prevState => {
+      const [ todo ] = prevState.todos.filter(e => e.id === id);
+      todo.completed = !todo.completed;
+      return ({
+        todos: [
+            ...prevState.todos
+        ]
+      })
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
         <Header addTodo={this.addTodo}/>
-        <Body todo={this.state.todos} />
+        <Body todo={this.state.todos} checkTodo={this.checkTodo} />
       </View>
     );
   }
