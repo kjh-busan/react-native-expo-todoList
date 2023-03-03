@@ -29,8 +29,8 @@ class Body extends Component {
           this.props.todos.map(data => (
             <View style={styles.todo} key={data.id}>
               <View style={styles.todoText}>
-                <TouchableOpacity style={styles.todoCheckbox}>
-                  {
+              <TouchableOpacity style={styles.todoCheckbox} 
+                onPressOut={() => this.props.checkTodo(data.id)} >                  {
                     data.completed
                     ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
                     : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
