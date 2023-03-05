@@ -22,7 +22,30 @@ export default class App extends React.Component {
         ...prevState.todos
       ]
     }));
-    console.log("App.js의state의todos value :" + this.state.todos.map((data) => data.text));    
+    // console.log("App.js의state의todos value :" + this.state.todos.map((data) => data.text));    
+  }
+
+  checkTodo = (id) => {
+    this.setState(prevState => {
+      const [ todo ] = prevState.todos.filter(e => e.id === id);
+      todo.completed = !todo.completed;
+      return ({
+        todos: [
+          ...prevState.todos
+        ]
+      })
+    });
+  }
+  
+  deleteTodo = (id) => {
+    console.log("id value: " + id);
+    // this.setState(prevState => {
+    //   return ({
+    //     todos: [
+    //       ...prevState.todos.filter(e => e.id !== id)
+    //     ]
+    //   })
+    // })
   }
 
   render() {
@@ -30,7 +53,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
         <Header addTodo={this.addTodo} />
-        <Body todos={this.state.todos} />
+        <Body todos={this.state.todos} checkTodo={this.checkTodo} />
       </View>
     );
   }

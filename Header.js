@@ -9,11 +9,19 @@ class Header extends Component {
   };
 
   addNewTodo = () => {
-    // console.log("this.state.newTodo : " + this.state.newTodo);
+    if(this.state.newTodo.trim().length > 0) {
+      // console.log("this.state.newTodo : " + this.state.newTodo);
       this.props.addTodo(this.state.newTodo);
       this.setState({
         newTodo: ''
       });
+      console.log("text.lenght: "+ this.state.newTodo.trim().length);
+    } else {
+      console.log("please input text");
+      this.setState({
+        newTodo: ''
+      });
+    }
   };
 
   render() {

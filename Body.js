@@ -3,41 +3,25 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 class Body extends Component {
-  state = [
-    {
-      text: '할일1',
-      completed: false,
-    },
-    {
-      text: '할일2',
-      completed: true,
-    },
-    {
-      text: '할일3',
-      completed: false,
-    },    {
-      text: '할일4',
-      completed: true,
-    },
-  ]
-
   render() {
     return (
       <View style={styles.container} >
         {
           this.props.todos.map(data => (
             <View style={styles.todo} key={data.id}>
-              <View style={styles.todoText} >
-                <TouchableOpacity style={styles.todoCheckbox} >
+              <View style={styles.todoText}>
+                <TouchableOpacity style={styles.todoCheckbox} 
+                  onPressOut={() => this.props.checkTodo(data.id)}
+                >
                 {
                   data.completed
                   ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
                   : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
                 }
                 </TouchableOpacity>
-                <Text>{data.text}</Text>
+                <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
               </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPressOut={() => this.props.deleteTodo(data.id)} >
               <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
             </TouchableOpacity>
           </View>
