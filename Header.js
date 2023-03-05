@@ -6,7 +6,7 @@ class Header extends Component {
 
   state = {
       newTodo: '',
-  }
+  };
 
   addNewTodo = () => {
     if(this.state.newTodo) {
@@ -15,7 +15,8 @@ class Header extends Component {
         newTodo: ''
       });
     }
-  }
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -27,7 +28,7 @@ class Header extends Component {
             value={this.state.newTodo}
             onChangeText={(newTodo) => this.setState({newTodo})}
           />
-          <TouchableOpacity onPressOut={this.addNewTodo}>
+          <TouchableOpacity>
             <MaterialCommunityIcons style={styles.addBtn} size={30} name='plus-circle' />
           </TouchableOpacity>
         </View>

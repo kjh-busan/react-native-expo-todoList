@@ -17,23 +17,32 @@ class Body extends Component {
       completed: false,
     },    {
       text: '할일4',
-      completed: false,
+      completed: true,
     },
-
   ]
 
   render() {
     return (
       <View style={styles.container} >
-        <View style={styles.todo} >
-          <View style={styles.todoText} >
-            <TouchableOpacity style={styles.todoCheckbox} >
+        {
+          this.state.map(data => (
+          <View style={styles.todo} >
+            <View style={styles.todoText} >
+              <TouchableOpacity style={styles.todoCheckbox} >
+              {
+                data.completed
+                ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
+                : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
+              }
+              </TouchableOpacity>
+              <Text>{data.text}</Text>
+            </View>
+            <TouchableOpacity>
+              <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity>
-            <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-          </TouchableOpacity>
-        </View>
+          ))
+        }
       </View>
     )
   }
