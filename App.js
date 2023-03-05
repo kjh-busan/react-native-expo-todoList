@@ -9,20 +9,20 @@ export default class App extends React.Component {
   }
 
   addTodo = (todo) => {
+    // console.log("todo value: " + todo);
     const newTodo = {
       id: Date.now(),
       text: todo,
       completed: false,
     }
-
+// console.log("const newTodo value: " + newTodo);
     this.setState(prevState => ({
       todos: [
         newTodo,
         ...prevState.todos
       ]
     }));
-
-    console.log("newTodo값:" + newTodo.text);    
+    console.log("App.js의state의todos value :" + this.state.todos.map((data) => data.text));    
   }
 
   render() {
@@ -30,7 +30,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
         <Header addTodo={this.addTodo} />
-        <Body />
+        <Body todos={this.state.todos} />
       </View>
     );
   }

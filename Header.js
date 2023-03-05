@@ -9,6 +9,7 @@ class Header extends Component {
   };
 
   addNewTodo = () => {
+    // console.log("this.state.newTodo : " + this.state.newTodo);
       this.props.addTodo(this.state.newTodo);
       this.setState({
         newTodo: ''
