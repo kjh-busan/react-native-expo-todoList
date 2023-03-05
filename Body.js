@@ -1,85 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-// export default function Body({ todos }) {
-const Body = () => {
-  const removeTodo = (id) => {
-    console.log("removeTodo(id) value: " + id);
-    setTodos(prevState => {
-      const index = prevState.todos.findIndex(e => e.id === id);
-      prevState.todos.splice(index, 1);
-      return ({
-        todos: [
-          ...prevState.todos
-        ]
-      })
-    });
-  }
-  const checkTodo = (id) => {
-    console.log("checkTodo(id) value: " + id);
-    setTodos(prevState => {
-      const [ todo ] = prevState.todos.filter(e => e.id === id);
-      todo.completed = !todo.completed;
-      return ({
-        todos: [
-          ...prevState.todos
-        ]
-      })
-    });
-  }
-
-  const todos = [
-    {
-        text: '할일1',
-        completed: false,
-    },
-    {
-        text: '할일2',
-        completed: true,
-    },
-    {
-        text: '할일3',
-        completed: false,
-    },
-    {
-      text: '할일3',
-      completed: true,
-  },
-  {
-    text: '할일5',
-    completed: false,
-},
-]
-  return (
-    <View style={styles.container} >
-      {
-        todos.map(data => (
-          <View style={styles.todo} key={data.id}>
-            <View style={styles.todoText}>
-              <TouchableOpacity style={styles.todoCheckbox} 
-              >
-              {
-                data.completed
-                ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
-                : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
-              }
-              </TouchableOpacity>
-              <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
-            </View>
-            {
-              data.completed
-              ? <TouchableOpacity 
-              >
-                  <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+class Body extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        {
+          this.props.todos.map(data => (
+            <View style={styles.todo} key={data.id}>
+              <View style={styles.todoText}>
+                <TouchableOpacity style={styles.todoCheckbox} 
+                  onPressOut={() => this.props.checkTodo(data.id)}>
+                  {
+                    data.completed
+                    ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
+                    : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
+                  }
                 </TouchableOpacity>
-              : null
-            }
+                <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
+              </View>
+              <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)}>
+                <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+              </TouchableOpacity>
+            </View>
+          ))
+        }
         </View>
-        ))
-      }
-    </View>
-  )
+      )
+  }
 }
 
 const styles = StyleSheet.create({
