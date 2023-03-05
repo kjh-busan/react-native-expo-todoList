@@ -15,9 +15,9 @@ class Header extends Component {
       this.setState({
         newTodo: ''
       });
-      console.log("text.lenght: "+ this.state.newTodo.trim().length);
+      // console.log("text.lenght: "+ this.state.newTodo.trim().length);
     } else {
-      console.log("please input text");
+      alert("please input text");
       this.setState({
         newTodo: ''
       });

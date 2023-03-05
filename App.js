@@ -38,6 +38,7 @@ export default class App extends React.Component {
   //   });
   // }
   removeTodo = (id) => {
+    console.log("id value from body.js : " + id);
     this.setState(prevState => {
       const index = prevState.todos.findIndex(e => e.id === id);
       prevState.todos.splice(index, 1);
