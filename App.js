@@ -4,12 +4,32 @@ import Header from './Header'
 import Body from './Body'
 
 export default class App extends React.Component {
+  state = {
+    todos : []
+  }
+
+  addTodo = (todo) => {
+    const newTodo = {
+      id: Date.now(),
+      text: todo,
+      completed: false,
+    }
+
+    this.setState(prevState => ({
+      todos: [
+        newTodo,
+        ...prevState.todos
+      ]
+    }));
+
+    console.log("newTodo값:" + newTodo.text);    
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
-        <Header />
+        <Header addTodo={this.addTodo} />
         <Body />
       </View>
     );
