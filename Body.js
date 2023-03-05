@@ -24,26 +24,16 @@ class Body extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {
-          this.props.todos.map(data => (
-            <View style={styles.todo} key={data.id}>
-              <View style={styles.todoText}>
-              <TouchableOpacity style={styles.todoCheckbox} 
-                onPressOut={() => this.props.checkTodo(data.id)} >                  {
-                    data.completed
-                    ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
-                    : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
-                  }
-                </TouchableOpacity>
-                <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
-              </View>
-              <TouchableOpacity>
-                <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-              </TouchableOpacity>
-            </View>
-          ))
-        }
+      <View style={styles.container} >
+        <View style={styles.todo} >
+          <View style={styles.todoText} >
+            <TouchableOpacity style={styles.todoCheckbox} >
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity>
+            <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
