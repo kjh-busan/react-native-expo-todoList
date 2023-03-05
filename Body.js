@@ -21,9 +21,9 @@ class Body extends Component {
                 </TouchableOpacity>
                 <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
               </View>
-            <TouchableOpacity onPressOut={() => this.props.deleteTodo(data.id)} >
-              <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-            </TouchableOpacity>
+              <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)}>
+                <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+              </TouchableOpacity>
           </View>
           ))
         }

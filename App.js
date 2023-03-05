@@ -24,7 +24,30 @@ export default class App extends React.Component {
     }));
     // console.log("App.js의state의todos value :" + this.state.todos.map((data) => data.text));    
   }
-
+  
+  // removeTodo = (id) => {
+  //   alert("id value: " + id);
+  //   this.setState(prevState => {
+  //     const [ todo ] = prevState.todos.filter(e => e.id === id);
+  //     todo.completed = !todo.completed;
+  //     return ({
+  //       todos: [
+  //         ...prevState.todos
+  //       ]
+  //     })
+  //   });
+  // }
+  removeTodo = (id) => {
+    this.setState(prevState => {
+      const index = prevState.todos.findIndex(e => e.id === id);
+      prevState.todos.splice(index, 1);
+      return ({
+        todos: [
+          ...prevState.todos
+        ]
+      })
+    });
+  }
   checkTodo = (id) => {
     this.setState(prevState => {
       const [ todo ] = prevState.todos.filter(e => e.id === id);
@@ -35,17 +58,6 @@ export default class App extends React.Component {
         ]
       })
     });
-  }
-  
-  deleteTodo = (id) => {
-    console.log("id value: " + id);
-    // this.setState(prevState => {
-    //   return ({
-    //     todos: [
-    //       ...prevState.todos.filter(e => e.id !== id)
-    //     ]
-    //   })
-    // })
   }
 
   render() {
