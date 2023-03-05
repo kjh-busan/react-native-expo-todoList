@@ -1,10 +1,56 @@
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import App from './App';
 
 // export default function Body({ todos }) {
 const Body = () => {
+  const removeTodo = (id) => {
+    console.log("removeTodo(id) value: " + id);
+    setTodos(prevState => {
+      const index = prevState.todos.findIndex(e => e.id === id);
+      prevState.todos.splice(index, 1);
+      return ({
+        todos: [
+          ...prevState.todos
+        ]
+      })
+    });
+  }
+  const checkTodo = (id) => {
+    console.log("checkTodo(id) value: " + id);
+    setTodos(prevState => {
+      const [ todo ] = prevState.todos.filter(e => e.id === id);
+      todo.completed = !todo.completed;
+      return ({
+        todos: [
+          ...prevState.todos
+        ]
+      })
+    });
+  }
+
+  const todos = [
+    {
+        text: '할일1',
+        completed: false,
+    },
+    {
+        text: '할일2',
+        completed: true,
+    },
+    {
+        text: '할일3',
+        completed: false,
+    },
+    {
+      text: '할일3',
+      completed: true,
+  },
+  {
+    text: '할일5',
+    completed: false,
+},
+]
   return (
     <View style={styles.container} >
       {
@@ -12,7 +58,6 @@ const Body = () => {
           <View style={styles.todo} key={data.id}>
             <View style={styles.todoText}>
               <TouchableOpacity style={styles.todoCheckbox} 
-                onPressOut={() => checkTodo(data.id)}
               >
               {
                 data.completed
@@ -24,7 +69,8 @@ const Body = () => {
             </View>
             {
               data.completed
-              ? <TouchableOpacity onPressOut={() => removeTodo(data.id)} >
+              ? <TouchableOpacity 
+              >
                   <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
                 </TouchableOpacity>
               : null

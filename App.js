@@ -5,30 +5,38 @@ import Body from './Body'
 
 // export default class App extends React.Component {
 const App = () => {
-  const [todos, setTodos] = setTodos({});
-  // state = {
-  //   todos : []
-  // }
+  const [todos, setTodos] = useState({});
 
-  addTodo = (todo) => {
-    // console.log("todo value: " + todo);
-    const newTodo = {
-      id: Date.now(),
-      text: todo,
-      completed: false,
-    }
-// console.log("const newTodo value: " + newTodo);
-    setState(prevState => ({
-      todos: [
-        newTodo,
-        ...prevState.todos
-      ]
-    }));
-    // console.log("App.js의state의todos value :" + state.todos.map((data) => data.text));    
-  }
-  
+//   addTodo = (todo) => {
+//     // console.log("todo value: " + todo);
+//     const newTodo = {
+//       id: Date.now(),
+//       text: todo,
+//       completed: false,
+//     }
+// // console.log("const newTodo value: " + newTodo);
+//     setTodos(prevState => ({
+//       todos: [
+//         newTodo,
+//         ...prevState.todos
+//       ]
+//     }));
+//     // console.log("App.js의state의todos value :" + state.todos.map((data) => data.text));    
+//   }
+
   // removeTodo = (id) => {
-  //   alert("id value: " + id);
+  //   console.log("id value from body.js ");
+  //   setState(prevState => {
+  //     const index = prevState.todos.findIndex(e => e.id === id);
+  //     prevState.todos.splice(index, 1);
+  //     return ({
+  //       todos: [
+  //         ...prevState.todos
+  //       ]
+  //     })
+  //   });
+  // }
+  // checkTodo = (id) => {
   //   setState(prevState => {
   //     const [ todo ] = prevState.todos.filter(e => e.id === id);
   //     todo.completed = !todo.completed;
@@ -40,39 +48,13 @@ const App = () => {
   //   });
   // }
 
-  removeTodo = (id) => {
-    console.log("id value from body.js ");
-    setState(prevState => {
-      const index = prevState.todos.findIndex(e => e.id === id);
-      prevState.todos.splice(index, 1);
-      return ({
-        todos: [
-          ...prevState.todos
-        ]
-      })
-    });
-  }
-  checkTodo = (id) => {
-    setState(prevState => {
-      const [ todo ] = prevState.todos.filter(e => e.id === id);
-      todo.completed = !todo.completed;
-      return ({
-        todos: [
-          ...prevState.todos
-        ]
-      })
-    });
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Todo App</Text>
-        <Header addTodo={addTodo} />
-        <Body todos={todos} removeTodo={removeTodo} checkTodo={checkTodo} />
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Todo App</Text>
+      <Header />
+      <Body />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
