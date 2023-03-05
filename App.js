@@ -37,8 +37,9 @@ export default class App extends React.Component {
   //     })
   //   });
   // }
+
   removeTodo = (id) => {
-    console.log("id value from body.js : " + id);
+    console.log("id value from body.js ");
     this.setState(prevState => {
       const index = prevState.todos.findIndex(e => e.id === id);
       prevState.todos.splice(index, 1);
@@ -66,7 +67,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
         <Header addTodo={this.addTodo} />
-        <Body todos={this.state.todos} checkTodo={this.checkTodo} />
+        <Body todos={this.state.todos} removeTodo={this.removeTodo} checkTodo={this.checkTodo} />
       </View>
     );
   }

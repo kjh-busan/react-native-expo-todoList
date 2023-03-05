@@ -3,6 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 class Body extends Component {
+
   render() {
     return (
       <View style={styles.container} >
@@ -23,7 +24,7 @@ class Body extends Component {
               </View>
               {
                 data.completed
-                ? <TouchableOpacity onPressOut={this.props.removeTodo(data.id)}>
+                ? <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)} >
                     <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
                   </TouchableOpacity>
                 : null
