@@ -2,39 +2,36 @@ import React, { Component } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-class Body extends Component {
-
-  render() {
-    return (
-      <View style={styles.container} >
-        {
-          this.props.todos.map(data => (
-            <View style={styles.todo} key={data.id}>
-              <View style={styles.todoText}>
-                <TouchableOpacity style={styles.todoCheckbox} 
-                  onPressOut={() => this.props.checkTodo(data.id)}
-                >
-                {
-                  data.completed
-                  ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
-                  : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
-                }
-                </TouchableOpacity>
-                <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
-              </View>
+export default function Body() {
+  return (
+    <View style={styles.container} >
+      {
+        this.props.todos.map(data => (
+          <View style={styles.todo} key={data.id}>
+            <View style={styles.todoText}>
+              <TouchableOpacity style={styles.todoCheckbox} 
+                onPressOut={() => this.props.checkTodo(data.id)}
+              >
               {
                 data.completed
-                ? <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)} >
-                    <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
-                  </TouchableOpacity>
-                : null
+                ? <MaterialCommunityIcons size={20} name='checkbox-marked-circle-outline' />
+                : <MaterialCommunityIcons size={20} name='checkbox-blank-circle-outline' />
               }
-          </View>
-          ))
-        }
-      </View>
-    )
-  }
+              </TouchableOpacity>
+              <Text style={[data.completed ? styles.todoCompleted : null]}>{data.text}</Text>
+            </View>
+            {
+              data.completed
+              ? <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)} >
+                  <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
+                </TouchableOpacity>
+              : null
+            }
+        </View>
+        ))
+      }
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -68,5 +65,3 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through"
   }
 });
-
-export default Body;
