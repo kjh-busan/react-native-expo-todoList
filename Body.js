@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import App from './App';
 
-export default function Body() {
+// export default function Body({ todos }) {
+const Body = () => {
   return (
     <View style={styles.container} >
       {
-        this.props.todos.map(data => (
+        todos.map(data => (
           <View style={styles.todo} key={data.id}>
             <View style={styles.todoText}>
               <TouchableOpacity style={styles.todoCheckbox} 
-                onPressOut={() => this.props.checkTodo(data.id)}
+                onPressOut={() => checkTodo(data.id)}
               >
               {
                 data.completed
@@ -22,7 +24,7 @@ export default function Body() {
             </View>
             {
               data.completed
-              ? <TouchableOpacity onPressOut={() => this.props.removeTodo(data.id)} >
+              ? <TouchableOpacity onPressOut={() => removeTodo(data.id)} >
                   <MaterialCommunityIcons style={styles.todoDelBtn} size={30} name='delete-outline' />
                 </TouchableOpacity>
               : null
@@ -65,3 +67,5 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through"
   }
 });
+
+export default Body;

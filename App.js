@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, AsyncStorage } from 'react-native';
 import Header from './Header'
 import Body from './Body'
 
-export default class App extends React.Component {
-  state = {
-    todos : []
-  }
+// export default class App extends React.Component {
+const App = () => {
+  const [todos, setTodos] = setTodos({});
+  // state = {
+  //   todos : []
+  // }
 
   addTodo = (todo) => {
     // console.log("todo value: " + todo);
@@ -16,18 +18,18 @@ export default class App extends React.Component {
       completed: false,
     }
 // console.log("const newTodo value: " + newTodo);
-    this.setState(prevState => ({
+    setState(prevState => ({
       todos: [
         newTodo,
         ...prevState.todos
       ]
     }));
-    // console.log("App.js의state의todos value :" + this.state.todos.map((data) => data.text));    
+    // console.log("App.js의state의todos value :" + state.todos.map((data) => data.text));    
   }
   
   // removeTodo = (id) => {
   //   alert("id value: " + id);
-  //   this.setState(prevState => {
+  //   setState(prevState => {
   //     const [ todo ] = prevState.todos.filter(e => e.id === id);
   //     todo.completed = !todo.completed;
   //     return ({
@@ -40,7 +42,7 @@ export default class App extends React.Component {
 
   removeTodo = (id) => {
     console.log("id value from body.js ");
-    this.setState(prevState => {
+    setState(prevState => {
       const index = prevState.todos.findIndex(e => e.id === id);
       prevState.todos.splice(index, 1);
       return ({
@@ -51,7 +53,7 @@ export default class App extends React.Component {
     });
   }
   checkTodo = (id) => {
-    this.setState(prevState => {
+    setState(prevState => {
       const [ todo ] = prevState.todos.filter(e => e.id === id);
       todo.completed = !todo.completed;
       return ({
@@ -66,8 +68,8 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Todo App</Text>
-        <Header addTodo={this.addTodo} />
-        <Body todos={this.state.todos} removeTodo={this.removeTodo} checkTodo={this.checkTodo} />
+        <Header addTodo={addTodo} />
+        <Body todos={todos} removeTodo={removeTodo} checkTodo={checkTodo} />
       </View>
     );
   }
@@ -87,3 +89,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   }
 });
+
+export default App;

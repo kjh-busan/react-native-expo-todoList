@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import App from './App';
 
-class Header extends Component {
+// export default function Header() {
+const Header = () => {
 
   state = {
       newTodo: '',
@@ -24,25 +26,24 @@ class Header extends Component {
     }
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.input}> 
-         <TextInput 
-            style={styles.inputText}
-            placeholder='Enter new todo'
-            autoCorrect={ false }
-            value={this.state.newTodo}
-            onChangeText={(newTodo) => this.setState({newTodo})}
-          />
-          <TouchableOpacity onPressOut={this.addNewTodo} >
-            <MaterialCommunityIcons style={styles.addBtn} size={30} name='plus-circle' />
-          </TouchableOpacity>
-        </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.input}> 
+        <TextInput 
+          style={styles.inputText}
+          placeholder='Enter new todo'
+          autoCorrect={ false }
+          value={this.state.newTodo}
+          onChangeText={(newTodo) => this.setState({newTodo})}
+        />
+        <TouchableOpacity onPressOut={this.addNewTodo} >
+          <MaterialCommunityIcons style={styles.addBtn} size={30} name='plus-circle' />
+        </TouchableOpacity>
       </View>
-    )
-  }
+    </View>
+  )
 }
+
 
 const styles = StyleSheet.create({
     container: {
