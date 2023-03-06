@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 class Header extends Component {
 
@@ -9,15 +9,15 @@ class Header extends Component {
 }
 addNewTodo = () => {
   if(this.state.newTodo.trim().length > 0) {
-      this.props.addTodo(this.state.newTodo.trim());
+      this.props.addTodo(this.state.newTodo.trim())
       this.setState({
           newTodo: ''
-      });
+      })
   } else {
-    alert("Please Input text");
+    alert("Please Input text")
     this.setState({
       newTodo: ''
-  });
+  })
   }
 }
 
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     addBtn: {
         color: '#4169E1'
     }
-});
+})
 
-export default Header;
+export default Header

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 class Body extends Component {
   render() {
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     color: "#bbb",
     textDecorationLine: "line-through"
   }
-});
+})
 
-export default Body;
+export default Body
